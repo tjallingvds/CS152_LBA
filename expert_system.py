@@ -45,7 +45,7 @@ def expert_system():
     """
     list(prolog.query("clear_known"))
     
-    # Question loop - Prolog determines what to ask next based on current knowledge
+    # Question loop
     while True:
         questions = list(prolog.query("next_question(Attribute, Question, Options)"))
         
@@ -60,7 +60,7 @@ def expert_system():
         
         answer = ask_question(question, options)
         
-        # Price needs quotes in Prolog due to hyphen character
+        # Price needs quotes in Prolog deu to hyphen character
         if attribute == 'price':
             prolog.assertz(f"known({attribute}, '{answer}', yes)")
         else:
@@ -73,7 +73,7 @@ def expert_system():
         recommendation = recommendations[0]
         name = recommendation['Name']
         
-        # Retrieve user's choices for display 
+        # Retrieve user choices for displadiy 
         activity_data = list(prolog.query("known(activity, Activity, yes)"))
         location_data = list(prolog.query("known(location, Location, yes)"))
         
